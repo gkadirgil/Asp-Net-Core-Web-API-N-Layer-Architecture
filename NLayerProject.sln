@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLayerProject.API", "NLayerProject.API\NLayerProject.API.csproj", "{AA161B65-1727-43E5-89F9-E774ACC2426F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLayerProject.API", "NLayerProject.API\NLayerProject.API.csproj", "{AA161B65-1727-43E5-89F9-E774ACC2426F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLayerProject.Core", "NLayerProject.Core\NLayerProject.Core.csproj", "{F1F740AD-CAF4-42C2-AFC0-8E1B184057D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLayerProject.Core", "NLayerProject.Core\NLayerProject.Core.csproj", "{F1F740AD-CAF4-42C2-AFC0-8E1B184057D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLayerProject.Data", "NLayerProject.Data\NLayerProject.Data.csproj", "{F640495D-9690-46E0-BB36-521167F193E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLayerProject.Data", "NLayerProject.Data\NLayerProject.Data.csproj", "{F640495D-9690-46E0-BB36-521167F193E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLayerProject.Service", "NLayerProject.Service\NLayerProject.Service.csproj", "{C2D00F04-A0A6-46BE-81DB-7B1C6BEE3CB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NLayerProject.Service", "NLayerProject.Service\NLayerProject.Service.csproj", "{C2D00F04-A0A6-46BE-81DB-7B1C6BEE3CB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLayerProject.WEB", "NLayerProject.WEB\NLayerProject.WEB.csproj", "{4C801683-49DF-47B4-910F-8CF1C5A08B00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C2D00F04-A0A6-46BE-81DB-7B1C6BEE3CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2D00F04-A0A6-46BE-81DB-7B1C6BEE3CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2D00F04-A0A6-46BE-81DB-7B1C6BEE3CB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C801683-49DF-47B4-910F-8CF1C5A08B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C801683-49DF-47B4-910F-8CF1C5A08B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C801683-49DF-47B4-910F-8CF1C5A08B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C801683-49DF-47B4-910F-8CF1C5A08B00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
