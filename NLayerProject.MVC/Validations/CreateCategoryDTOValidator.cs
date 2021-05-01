@@ -11,7 +11,8 @@ namespace NLayerProject.MVC.Validations
     {
         public CreateCategoryDTOValidator()
         {
-            RuleFor(x => x.Name).NotEmpty().WithMessage("Category Name is required.");
+           
+            RuleFor(x=>x.Name).NotNull().WithMessage("Category Name is required.");
         }
     }
 }

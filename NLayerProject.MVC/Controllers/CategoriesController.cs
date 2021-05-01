@@ -16,12 +16,10 @@ namespace NLayerProject.MVC.Controllers
     {
         private readonly ICategoryService _categoryService;
         private readonly IMapper _mapper;
-        private readonly IUnitOfWorks _unitOfWorks;
 
-        public CategoriesController(ICategoryService categoryService, IMapper mapper, IUnitOfWorks unitOfWorks)
+        public CategoriesController(ICategoryService categoryService, IMapper mapper)
         {
             _mapper = mapper;
-            _unitOfWorks = unitOfWorks;
             _categoryService = categoryService;
         }
         public async Task<IActionResult> Index()
@@ -41,11 +39,17 @@ namespace NLayerProject.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CategoryDTO categoryDTO)
         {
-            var category = _mapper.Map<Category>(categoryDTO);
-            await _categoryService.AddAsync(category);
+           
+                var category = _mapper.Map<Category>(categoryDTO);
+                await _categoryService.AddAsync(category);
 
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+           
+
+           
+
+
         }
 
         public async Task<IActionResult> Update(int id)

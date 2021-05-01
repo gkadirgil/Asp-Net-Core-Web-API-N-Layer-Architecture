@@ -9,7 +9,7 @@ namespace NLayerProject.MVC.DTOs
     public class CategoryDTO
     {
         public int Id { get; set; }
-        
+
         [Required]
         public string Name { get; set; }
     }
