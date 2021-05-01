@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using NLayerProject.Core.Model;
-using NLayerProject.WEB.DTOs;
+using NLayerProject.MVC.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NLayerProject.WEB.Mapping
+namespace NLayerProject.MVC.Mapping
 {
     public class MapProfile:Profile
     {

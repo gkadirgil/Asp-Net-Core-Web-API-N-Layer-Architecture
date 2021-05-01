@@ -1,14 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using NLayerProject.WEB.DTOs;
-using NLayerProject.WEB.Models;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace NLayerProject.WEB.Controllers
+using NLayerProject.MVCwithAPI.DTOs;
+namespace NLayerProject.MVCwithAPI.Controllers
 {
     public class HomeController : Controller
     {

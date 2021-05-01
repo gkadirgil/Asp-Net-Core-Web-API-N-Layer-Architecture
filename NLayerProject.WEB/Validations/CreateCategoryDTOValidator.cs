@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
-using NLayerProject.WEB.DTOs;
+using NLayerProject.MVCwithAPI.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NLayerProject.WEB.Validations
+namespace NLayerProject.MVCwithAPI.Validations
 {
     public class CreateCategoryDTOValidator : AbstractValidator<CategoryDTO>
     {

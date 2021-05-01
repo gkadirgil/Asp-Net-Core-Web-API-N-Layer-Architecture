@@ -1,28 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using NLayerProject.Core.Services;
-using NLayerProject.WEB.DTOs;
+using NLayerProject.MVCwithAPI.APIServices;
+using NLayerProject.MVCwithAPI.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NLayerProject.WEB.Filters
+namespace NLayerProject.MVCwithAPI.Filters
 {
-    public class GenericNotFoundFilter<TEntity> : IAsyncActionFilter where TEntity : class
+    public class NotFoundFilter : IAsyncActionFilter
     {
-        private readonly IServicesGeneric<TEntity> _service;
+       
+        private readonly CategoryAPIServices _categoryAPIService;
 
-        public GenericNotFoundFilter(IServicesGeneric<TEntity> service)
+        public NotFoundFilter(CategoryAPIServices categoryAPIService)
         {
-            _service=service;
+            _categoryAPIService = categoryAPIService;
         }
 
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             var id = (int)context.ActionArguments.Values.FirstOrDefault();
 
-            var entity = await _service.GetByIdAsync(id);
+            var entity = await _categoryAPIService.GetByIdAsync(id);
 
             if (entity!=null)
             {
@@ -33,7 +34,7 @@ namespace NLayerProject.WEB.Filters
             {
                 ErrorDTO errorDTO = new ErrorDTO();
 
-                errorDTO.Errors.Add($" Entity is not found being ID:{id}.");
+                errorDTO.Errors.Add($" Category is not found being ID:{id}.");
 
                 context.Result = new RedirectToActionResult("Error", "Home", errorDTO);
             }

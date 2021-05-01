@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace NLayerProject.API.Controllers
 {
-    [ServiceFilter(typeof(GenericNotFoundFilter<Category>))]
+ 
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase

@@ -1,25 +1,12 @@
-using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NLayerProject.Core.Repositories;
-using NLayerProject.Core.Services;
-using NLayerProject.Core.UnitOfWorks;
-using NLayerProject.Data;
-using NLayerProject.Data.Repositories;
-using NLayerProject.Data.UnitOfWorks;
-using NLayerProject.Service.Services;
-using NLayerProject.WEB.Filters;
+using NLayerProject.MVCwithAPI.APIServices;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace NLayerProject.WEB
+namespace NLayerProject.MVCwithAPI
 {
     public class Startup
     {
@@ -34,29 +21,13 @@ namespace NLayerProject.WEB
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            
-            services.AddAutoMapper(typeof(Startup));
-            services.AddScoped(typeof(GenericNotFoundFilter<>));
-            services.AddScoped<IUnitOfWorks, UnitOfWorks>();
-            services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
-            services.AddScoped(typeof(IServicesGeneric<>), typeof(Service.Services.ServiceGeneric<>));
-            services.AddScoped<IProductService, ProductService>();
-            services.AddScoped<ICategoryService, CategoryService>();
 
-
-            services.AddDbContext<AppDbContext>(options =>
+            services.AddHttpClient<CategoryAPIServices>(opt =>
             {
-                options.UseSqlServer(Configuration["ConnectionStrings:SqlConStr"].ToString(),
-                    sqlOptions =>
-                    {
-                        sqlOptions.MigrationsAssembly("NLayerProject.Data");
-                    });
+                opt.BaseAddress = new Uri(Configuration["baseUrl"]);
             });
 
-            services.AddControllersWithViews().AddFluentValidation(opt =>
-            {
-                opt.RegisterValidatorsFromAssemblyContaining<Startup>();
-            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

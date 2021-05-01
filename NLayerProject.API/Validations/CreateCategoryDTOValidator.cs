@@ -11,11 +11,10 @@ namespace NLayerProject.API.Validations
     {
         public CreateCategoryDTOValidator()
         {
-            RuleFor(x => x.Id).NotEmpty().WithMessage("ID is required.");
+           
 
             RuleFor(x => x.Name).NotEmpty().WithMessage("Category Name is required.");
 
-            RuleFor(x=>x.Id).NotEmpty().WithMessage("Category Id is required.");
         }
     }
 }

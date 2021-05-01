@@ -1,6 +1,6 @@
 using System;
 
-namespace NLayerProject.WEB.Models
+namespace NLayerProject.MVCwithAPI.Models
 {
     public class ErrorViewModel
     {

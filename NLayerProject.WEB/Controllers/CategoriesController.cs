@@ -1,30 +1,28 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using NLayerProject.Core.Model;
-using NLayerProject.Core.Services;
-using NLayerProject.Core.UnitOfWorks;
-using NLayerProject.WEB.DTOs;
-using NLayerProject.WEB.Filters;
+using NLayerProject.MVCwithAPI.APIServices;
+using NLayerProject.MVCwithAPI.DTOs;
+using NLayerProject.MVCwithAPI.Filters;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace NLayerProject.WEB.Controllers
+namespace NLayerProject.MVCwithAPI.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly ICategoryService _categoryService;
+     
+        private readonly CategoryAPIServices _categoryAPIServices;
         private readonly IMapper _mapper;
-        private readonly IUnitOfWorks _unitOfWorks;
+       
 
-        public CategoriesController(ICategoryService categoryService, IMapper mapper, IUnitOfWorks unitOfWorks)
+        public CategoriesController(IMapper mapper,CategoryAPIServices categoryAPIServices)
         {
             _mapper = mapper;
-            _unitOfWorks = unitOfWorks;
-            _categoryService = categoryService;
+            _categoryAPIServices = categoryAPIServices;
         }
         public async Task<IActionResult> Index()
         {
-            var categories = await _categoryService.GetAllAsync();
+            var categories = await _categoryAPIServices.GetAllAsync();
 
             var categoriesDTO = _mapper.Map<IEnumerable<CategoryDTO>>(categories);
 
@@ -39,8 +37,8 @@ namespace NLayerProject.WEB.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CategoryDTO categoryDTO)
         {
-            var category = _mapper.Map<Category>(categoryDTO);
-            await _categoryService.AddAsync(category);
+            
+            await _categoryAPIServices.AddAsync(categoryDTO);
             
 
             return RedirectToAction("Index");
@@ -48,24 +46,24 @@ namespace NLayerProject.WEB.Controllers
 
         public async Task<IActionResult> Update(int id)
         {
-            var category = await _categoryService.GetByIdAsync(id);
+            var category = await _categoryAPIServices.GetByIdAsync(id);
 
             return View(_mapper.Map<CategoryDTO>(category));
         }
 
         [HttpPost]
-        public IActionResult Update(CategoryDTO categoryDTO)
+        public async Task<IActionResult> Update(CategoryDTO categoryDTO)
         {
-            _categoryService.Update(_mapper.Map<Category>(categoryDTO));
+            await _categoryAPIServices.Update(categoryDTO);
             
             return RedirectToAction("Index");
         }
 
-        [ServiceFilter(typeof(GenericNotFoundFilter<Category>))]
-        public IActionResult Delete(int id)
+      
+        public async Task<IActionResult> Delete(int id)
         {
-            var category = _categoryService.GetByIdAsync(id).Result;
-            _categoryService.Remove(category);
+
+            await _categoryAPIServices.Remove(id);
 
             return RedirectToAction("Index");
         }
